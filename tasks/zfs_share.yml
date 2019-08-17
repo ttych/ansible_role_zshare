@@ -1,0 +1,38 @@
+---
+
+- fail: msg="Variable share_path is required"
+  when: share_path is not defined
+
+- name: get share dataset
+  shell: df -P -l -k {{ share_path }} | tail -n1  | cut -d ' ' -f1
+  register: share_dataset
+  changed_when: False
+
+# FIXME
+# quit if not zfs
+
+- name: Include zfs_share vars
+  include_vars:
+    file: zfs_share.yml
+
+- fail: msg="Variable zshares is required"
+  when: zshares is not defined
+
+- name: create share datasets
+  zfs:
+    name: "{{ share_dataset.stdout }}/{{ dataset.name }}"
+    state: present
+    extra_zfs_properties: "{{ dataset.properties }}"
+  with_items: "{{ zshares }}"
+  loop_control:
+    loop_var: dataset
+
+- name: set share datasets rights
+  file:
+    path: "{{ share_path }}/{{ dataset.name }}"
+    owner: "{{ dataset.owner }}"
+    group: "{{ dataset.group }}"
+    mode: "{{ dataset.mode }}"
+  with_items: "{{ zshares }}"
+  loop_control:
+    loop_var: dataset

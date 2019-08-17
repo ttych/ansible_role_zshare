@@ -1,0 +1,74 @@
+---
+
+zshares:
+  - name: computer_sciences
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: dispatch
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "rw"
+    owner: share
+    group: share
+    mode: '3777'
+  - name: documentation
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: hardwares
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: musics
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: photos
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: purge
+    properties:
+      compression: "lz4"
+      sharenfs: "rw"
+    owner: share
+    group: share
+    mode: '3777'
+  - name: repositories
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '3777'
+  - name: videos
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '3777'

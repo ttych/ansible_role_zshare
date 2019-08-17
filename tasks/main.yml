@@ -1,2 +1,4 @@
 ---
 # tasks file for ansible_role_zshare
+
+- include_tasks: zfs_share.yml
