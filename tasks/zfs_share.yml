@@ -8,15 +8,29 @@
   register: share_dataset
   changed_when: False
 
-# FIXME
-# quit if not zfs
-
 - name: Include zfs_share vars
   include_vars:
     file: zfs_share.yml
 
 - fail: msg="Variable zshares is required"
   when: zshares is not defined
+
+- name: set share zfs properties
+  zfs:
+    name: "{{ share_dataset.stdout }}"
+    state: present
+    extra_zfs_properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: off
+      sharesmb: off
+
+- name: set share directory attributes
+  file:
+    path: "{{ share_path }}"
+    owner: root
+    group: share
+    mode: '0755'
 
 - name: create share datasets
   zfs:
