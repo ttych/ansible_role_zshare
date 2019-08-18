@@ -4,7 +4,7 @@
   when: share_path is not defined
 
 - name: get share dataset
-  shell: df -P -l -k {{ share_path }} | tail -n1  | cut -d ' ' -f1
+  shell: zfs list | grep '\s{{ share_path }}$' | cut -d ' ' -f1
   register: share_dataset
   changed_when: False
 
@@ -26,6 +26,7 @@
   with_items: "{{ zshares }}"
   loop_control:
     loop_var: dataset
+  when: share_dataset.stdout != ""
 
 - name: set share datasets rights
   file:
@@ -36,3 +37,4 @@
   with_items: "{{ zshares }}"
   loop_control:
     loop_var: dataset
+  when: share_dataset.stdout != ""
