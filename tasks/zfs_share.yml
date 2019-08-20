@@ -24,6 +24,7 @@
       compression: "lz4"
       sharenfs: off
       sharesmb: off
+  when: share_dataset.stdout != ""
 
 - name: set share directory attributes
   file:
@@ -31,6 +32,7 @@
     owner: root
     group: share
     mode: '0755'
+  when: share_dataset.stdout != ""
 
 - name: create share datasets
   zfs:
