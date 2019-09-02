@@ -31,7 +31,7 @@
     path: "{{ share_path }}"
     owner: root
     group: share
-    mode: '0755'
+    mode: '0555'
   when: share_dataset.stdout != ""
 
 - name: create share datasets

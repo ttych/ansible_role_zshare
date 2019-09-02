@@ -17,7 +17,23 @@ zshares:
     owner: share
     group: share
     mode: '3777'
+  - name: distfiles
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
   - name: documentation
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: games
     properties:
       setuid: off
       compression: "lz4"
@@ -49,6 +65,14 @@ zshares:
     owner: share
     group: share
     mode: '0755'
+  - name: projects
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: off
+    owner: share
+    group: share
+    mode: '0755'
   - name: purge
     properties:
       compression: "lz4"
@@ -63,7 +87,39 @@ zshares:
       sharenfs: "ro"
     owner: share
     group: share
-    mode: '3777'
+    mode: '0555'
+  - name: repositories/gitlab.com
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: repositories/github.com
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: repositories/old
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
+  - name: softwares
+    properties:
+      setuid: off
+      compression: "lz4"
+      sharenfs: "ro"
+    owner: share
+    group: share
+    mode: '0755'
   - name: videos
     properties:
       setuid: off
@@ -71,4 +127,4 @@ zshares:
       sharenfs: "ro"
     owner: share
     group: share
-    mode: '3777'
+    mode: '0755'
